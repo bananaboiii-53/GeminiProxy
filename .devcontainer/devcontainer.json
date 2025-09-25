@@ -1,0 +1,37 @@
+{
+    "name": "Node.js Proxy on Codespaces",
+    // Specifies the base image for the environment. This one comes with Node.js pre-installed.
+    "image": "mcr.microsoft.com/devcontainers/javascript-node:0-18",
+
+    "features": {
+        "ghcr.io/devcontainers/features/common-utils:2": {
+            "installZsh": true,
+            "configureZshAsDefaultShell": true
+        }
+    },
+
+    // This tells Codespaces what to do after the environment is created.
+    "postCreateCommand": "bash ./.devcontainer/post-create.sh",
+
+    // Forwards the port our proxy server runs on so you can access it.
+    "forwardPorts": [3000],
+
+    // When a port is forwarded, this tells Codespaces to open it in a public browser tab.
+    "portsAttributes": {
+        "3000": {
+            "label": "Proxy Server",
+            "onAutoForward": "openBrowser"
+        }
+    },
+
+    // Optional: Recommends useful VS Code extensions inside the Codespace.
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "dbaeumer.vscode-eslint",
+                "esbenp.prettier-vscode",
+                "ms-vscode.azure-repos"
+            ]
+        }
+    }
+}
